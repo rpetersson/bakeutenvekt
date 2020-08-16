@@ -43,7 +43,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func uiSliderValueChanged(_ sender: UISlider) {
         
-        uiLabelGram.text = String(format:"%.1f",uiSlider.value)
+        uiLabelGram.text = String(format:"%.0f",uiSlider.value) + " g"
         
         regneUt()
         
@@ -54,7 +54,7 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -62,7 +62,8 @@ class ViewController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSou
         
         //Sets label based on slider at init.
         
-        uiLabelGram.text = String(format:"%.1f",uiSlider.value)
+        uiLabelGram.text = String(format:"%.0f",uiSlider.value) + " g"
+        labelResult.text = String(uiSlider.value)
         
         
         
