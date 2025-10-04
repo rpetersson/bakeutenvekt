@@ -188,7 +188,7 @@ extension ContentView {
                                         .foregroundColor(.blue)
                 .accessibilityHidden(true)
             
-            Text("Convert grams to deciliters for baking")
+            Text("Konverter gram til desiliter for baking")
                 .font(.headline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
@@ -202,12 +202,12 @@ extension ContentView {
             HStack {
                 Image(systemName: "list.bullet")
                     .foregroundColor(.blue)
-                Text("Select Ingredient")
+                Text("Velg ingrediens")
                     .font(.headline)
                 Spacer()
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Select ingredient section")
+            .accessibilityLabel("Velg ingrediens seksjon")
             
             IngredientPickerView(
                 selectedIngredient: $viewModel.selectedIngredient,
@@ -223,7 +223,7 @@ extension ContentView {
             HStack {
                 Image(systemName: "scalemass")
                     .foregroundColor(.green)
-                Text("Amount in Grams")
+                Text("Mengde i gram")
                     .font(.headline)
                 Spacer()
                 Text(viewModel.formattedGramAmount())
@@ -232,7 +232,7 @@ extension ContentView {
                     .foregroundColor(.primary)
             }
             .accessibilityElement(children: .combine)
-            .accessibilityLabel("Amount in grams: \(viewModel.formattedGramAmount())")
+            .accessibilityLabel("Mengde i gram: \(viewModel.formattedGramAmount())")
             
             GramSliderView(gramAmount: $viewModel.gramAmount)
         }
@@ -245,7 +245,7 @@ extension ContentView {
             HStack {
                 Image(systemName: "cup.and.saucer.fill")
                     .foregroundColor(.orange)
-                Text("Result")
+                Text("Resultat")
                     .font(.headline)
                 Spacer()
             }
@@ -335,8 +335,8 @@ struct GramSliderView: View {
                     }
                 }
                 .tint(.green)
-                .accessibilityLabel("Gram amount slider")
-                .accessibilityValue("\(Int(gramAmount)) grams")
+                .accessibilityLabel("Gram mengde glidebryter")
+                .accessibilityValue("\(Int(gramAmount)) gram")
                 
                 Text("\(Int(maxValue))")
                     .font(.caption)
@@ -372,8 +372,8 @@ struct GramSliderView: View {
                                 .fill(gramAmount == Double(amount) ? .blue : .blue.opacity(0.1))
                         )
                 }
-                .accessibilityLabel("\(amount) grams")
-                .accessibilityHint("Set amount to \(amount) grams")
+                .accessibilityLabel("\(amount) gram")
+                .accessibilityHint("Sett mengde til \(amount) gram")
             }
         }
     }
@@ -391,7 +391,7 @@ struct ResultDisplayView: View {
                 Spacer()
                 
                 VStack(spacing: 8) {
-                    Text("Equals")
+                    Text("Tilsvarer")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
@@ -414,7 +414,7 @@ struct ResultDisplayView: View {
             )
             
             // Additional context
-            Text("of **\(ingredient)**")
+            Text("av **\(ingredient)**")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)

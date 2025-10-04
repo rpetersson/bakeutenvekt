@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		4E9BA6DC249252D600C52CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA6DB249252D600C52CB0 /* AppDelegate.swift */; };
 		4E9BA6DE249252D600C52CB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA6DD249252D600C52CB0 /* SceneDelegate.swift */; };
-		BAKINGAPP001 /* BakingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAKINGAPP002 /* BakingApp.swift */; };
 		4E9BA6E5249252DF00C52CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BA6E4249252DF00C52CB0 /* Assets.xcassets */; };
 		4E9BA6E8249252DF00C52CB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BA6E6249252DF00C52CB0 /* LaunchScreen.storyboard */; };
+		BAKINGAPP001 /* BakingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAKINGAPP002 /* BakingApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E9BA6D8249252D600C52CB0 /* Bake uten vekt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bake uten vekt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9BA6DB249252D600C52CB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E9BA6DD249252D600C52CB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BAKINGAPP002 /* BakingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakingApp.swift; sourceTree = "<group>"; };
 		4E9BA6E4249252DF00C52CB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E9BA6E7249252DF00C52CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E9BA6E9249252DF00C52CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAKINGAPP002 /* BakingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakingApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,6 @@
 			files = (
 				4E9BA6E8249252DF00C52CB0 /* LaunchScreen.storyboard in Resources */,
 				4E9BA6E5249252DF00C52CB0 /* Assets.xcassets in Resources */,
-				4E9BA6E3249252D600C52CB0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,14 +143,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4E9BA6E1249252D600C52CB0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E9BA6E2249252D600C52CB0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4E9BA6E6249252DF00C52CB0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,7 +275,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 6S2C5C5454;
 				INFOPLIST_FILE = bakeutenvekt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -292,7 +283,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = tristar.bakeutenvekt;
 				PRODUCT_NAME = "Bake uten vekt";
 				SWIFT_VERSION = 6.0;
@@ -305,7 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 6S2C5C5454;
 				INFOPLIST_FILE = bakeutenvekt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -313,7 +304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = tristar.bakeutenvekt;
 				PRODUCT_NAME = "Bake uten vekt";
 				SWIFT_VERSION = 6.0;
