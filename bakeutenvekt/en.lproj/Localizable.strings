@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  bakeutenvekt
+
+  Created by Robert Petersson on 04/10/2025.
+  Copyright © 2025 Robert Petersson. All rights reserved.
+*/
+
+// App Title
+"app.title" = "Bake uten vekt";
+"app.subtitle" = "Convert grams to deciliters for baking";
+
+// Ingredients
+"ingredient.hvetemel" = "All-purpose flour";
+"ingredient.grovt_mel" = "Whole wheat flour";
+"ingredient.havregryn" = "Oats";
+"ingredient.maizena" = "Cornstarch";
+"ingredient.potetmel" = "Potato flour";
+"ingredient.salt" = "Salt";
+"ingredient.sukker" = "Sugar";
+"ingredient.melis" = "Powdered sugar";
+"ingredient.sirup" = "Syrup";
+"ingredient.rosiner" = "Raisins";
+"ingredient.margarin" = "Margarine";
+"ingredient.olje" = "Oil";
+"ingredient.smulegryn" = "Breadcrumbs";
+"ingredient.ris,_langkornet" = "Long grain rice";
+"ingredient.ris_rundkornet" = "Short grain rice";
+"ingredient.erter,_bønner,_linser" = "Peas, beans, lentils";
+"ingredient.kakao" = "Cocoa";
+"ingredient.kokosmasse" = "Coconut";
+"ingredient.syltetøy" = "Jam";
+"ingredient.hvit-ost_revet" = "Grated white cheese";
+
+// UI Elements
+"section.select_ingredient" = "Select Ingredient";
+"section.amount_grams" = "Amount in Grams";
+"section.result" = "Result";
+"result.equals" = "Equals";
+"result.of" = "of";
+
+// Accessibility
+"accessibility.ingredient_picker" = "Selected ingredient: %@";
+"accessibility.ingredient_picker_hint" = "Tap to change ingredient";
+"accessibility.gram_slider" = "Gram amount slider";
+"accessibility.gram_slider_value" = "%d grams";
+"accessibility.quick_select_hint" = "Set amount to %d grams";
+"accessibility.result" = "Result: %@ of %@";
+
+// Errors
+"error.invalid_ingredient" = "Invalid ingredient selected";
+"error.invalid_amount" = "Invalid amount entered";

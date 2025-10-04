@@ -3,22 +3,20 @@
 //  bakeutenvekt
 //
 //  Created by Robert Petersson on 11/06/2020.
-//  Copyright © 2020 Robert Petersson. All rights reserved.
+//  Copyright © 2025 Robert Petersson. All rights reserved.
 //
 
 import UIKit
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    //Disable autorotation for iphones.
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return UIDevice.current.userInterfaceIdiom == .phone ? .portrait : .all
-    }
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Configure appearance for modern iOS
+        configureAppearance()
+        
         return true
     }
 
@@ -35,7 +33,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    
+    // MARK: - Interface Orientation
+    
+    /// Disable autorotation for iPhones, allow all orientations for iPads
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return UIDevice.current.userInterfaceIdiom == .phone ? .portrait : .all
+    }
+    
+    // MARK: - Private Methods
+    
+    /// Configures the global appearance for the app
+    private func configureAppearance() {
+        // Configure navigation bar appearance
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        
+        // Configure tab bar appearance if needed in the future
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
+    }
 }
 

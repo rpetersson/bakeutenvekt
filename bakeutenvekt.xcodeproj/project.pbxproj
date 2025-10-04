@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E9BA6DC249252D600C52CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA6DB249252D600C52CB0 /* AppDelegate.swift */; };
 		4E9BA6DE249252D600C52CB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA6DD249252D600C52CB0 /* SceneDelegate.swift */; };
-		4E9BA6E0249252D600C52CB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BA6DF249252D600C52CB0 /* ViewController.swift */; };
-		4E9BA6E3249252D600C52CB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BA6E1249252D600C52CB0 /* Main.storyboard */; };
+		BAKINGAPP001 /* BakingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAKINGAPP002 /* BakingApp.swift */; };
 		4E9BA6E5249252DF00C52CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BA6E4249252DF00C52CB0 /* Assets.xcassets */; };
 		4E9BA6E8249252DF00C52CB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9BA6E6249252DF00C52CB0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -19,8 +18,7 @@
 		4E9BA6D8249252D600C52CB0 /* Bake uten vekt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bake uten vekt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9BA6DB249252D600C52CB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E9BA6DD249252D600C52CB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E9BA6DF249252D600C52CB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4E9BA6E2249252D600C52CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BAKINGAPP002 /* BakingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BakingApp.swift; sourceTree = "<group>"; };
 		4E9BA6E4249252DF00C52CB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E9BA6E7249252DF00C52CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E9BA6E9249252DF00C52CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,8 +56,7 @@
 			children = (
 				4E9BA6DB249252D600C52CB0 /* AppDelegate.swift */,
 				4E9BA6DD249252D600C52CB0 /* SceneDelegate.swift */,
-				4E9BA6DF249252D600C52CB0 /* ViewController.swift */,
-				4E9BA6E1249252D600C52CB0 /* Main.storyboard */,
+				BAKINGAPP002 /* BakingApp.swift */,
 				4E9BA6E4249252DF00C52CB0 /* Assets.xcassets */,
 				4E9BA6E6249252DF00C52CB0 /* LaunchScreen.storyboard */,
 				4E9BA6E9249252DF00C52CB0 /* Info.plist */,
@@ -138,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E9BA6E0249252D600C52CB0 /* ViewController.swift in Sources */,
+				BAKINGAPP001 /* BakingApp.swift in Sources */,
 				4E9BA6DC249252D600C52CB0 /* AppDelegate.swift in Sources */,
 				4E9BA6DE249252D600C52CB0 /* SceneDelegate.swift in Sources */,
 			);
@@ -217,7 +214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -290,7 +287,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6S2C5C5454;
 				INFOPLIST_FILE = bakeutenvekt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,7 +295,7 @@
 				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = tristar.bakeutenvekt;
 				PRODUCT_NAME = "Bake uten vekt";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -311,7 +308,7 @@
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6S2C5C5454;
 				INFOPLIST_FILE = bakeutenvekt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +316,7 @@
 				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = tristar.bakeutenvekt;
 				PRODUCT_NAME = "Bake uten vekt";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

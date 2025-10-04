@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  bakeutenvekt
+
+  Created by Robert Petersson on 04/10/2025.
+  Copyright © 2025 Robert Petersson. All rights reserved.
+*/
+
+// App Title
+"app.title" = "Bake uten vekt";
+"app.subtitle" = "Konverter gram til desiliter for baking";
+
+// Ingredients
+"ingredient.hvetemel" = "Hvetemel";
+"ingredient.grovt_mel" = "Grovt mel";
+"ingredient.havregryn" = "Havregryn";
+"ingredient.maizena" = "Maizena";
+"ingredient.potetmel" = "Potetmel";
+"ingredient.salt" = "Salt";
+"ingredient.sukker" = "Sukker";
+"ingredient.melis" = "Melis";
+"ingredient.sirup" = "Sirup";
+"ingredient.rosiner" = "Rosiner";
+"ingredient.margarin" = "Margarin";
+"ingredient.olje" = "Olje";
+"ingredient.smulegryn" = "Smulegryn";
+"ingredient.ris,_langkornet" = "Ris, langkornet";
+"ingredient.ris_rundkornet" = "Ris rundkornet";
+"ingredient.erter,_bønner,_linser" = "Erter, bønner, linser";
+"ingredient.kakao" = "Kakao";
+"ingredient.kokosmasse" = "Kokosmasse";
+"ingredient.syltetøy" = "Syltetøy";
+"ingredient.hvit-ost_revet" = "Hvit-ost revet";
+
+// UI Elements
+"section.select_ingredient" = "Velg ingrediens";
+"section.amount_grams" = "Mengde i gram";
+"section.result" = "Resultat";
+"result.equals" = "Tilsvarer";
+"result.of" = "av";
+
+// Accessibility
+"accessibility.ingredient_picker" = "Valgt ingrediens: %@";
+"accessibility.ingredient_picker_hint" = "Trykk for å endre ingrediens";
+"accessibility.gram_slider" = "Gram mengde glidebryter";
+"accessibility.gram_slider_value" = "%d gram";
+"accessibility.quick_select_hint" = "Sett mengde til %d gram";
+"accessibility.result" = "Resultat: %@ av %@";
+
+// Errors
+"error.invalid_ingredient" = "Ugyldig ingrediens valgt";
+"error.invalid_amount" = "Ugyldig mengde angitt";
