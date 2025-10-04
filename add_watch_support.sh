@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Script to help add Apple Watch support to your iOS project
+# This script provides instructions since Xcode project modification is complex
+
+echo "🎯 Adding Apple Watch support to your baking app!"
+echo ""
+echo "To add Apple Watch support to your project, follow these steps:"
+echo ""
+echo "1. Open your project in Xcode:"
+echo "   open bakeutenvekt.xcodeproj"
+echo ""
+echo "2. In Xcode, select your project in the navigator"
+echo "3. Click the '+' button at the bottom of the targets list"
+echo "4. Choose 'watchOS' > 'Watch App'"
+echo "5. Configure the target:"
+echo "   - Product Name: bakeutenvekt Watch App"
+echo "   - Bundle Identifier: tristar.bakeutenvekt.watchkitapp"
+echo "   - Language: Swift"
+echo "   - User Interface: SwiftUI"
+echo "   - Minimum watchOS Version: 9.0 or later"
+echo ""
+echo "6. After creating the target, replace the generated files with our custom ones:"
+echo "   - Replace the ContentView.swift with our watch-optimized version"
+echo "   - Replace the App.swift with our BakingWatchApp.swift"
+echo ""
+echo "The watch app files are ready in: bakeutenvekt Watch App/"
+echo ""
+echo "📱 The watch app features:"
+echo "   ✅ Norwegian localization"
+echo "   ✅ Simplified ingredient selection"
+echo "   ✅ Touch-friendly increment/decrement buttons"
+echo "   ✅ Optimized for small screen"
+echo "   ✅ Quick access to common baking ingredients"
+echo ""
+echo "🚀 Once added, you can run the watch app on:"
+echo "   - Apple Watch simulator"
+echo "   - Physical Apple Watch (paired with iPhone)"
+echo ""
+
+# Make the script executable
+chmod +x "$0"

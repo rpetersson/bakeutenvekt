@@ -140,6 +140,33 @@ final class BakingConverterViewModel: ObservableObject {
 struct ContentView: View {
     @StateObject private var viewModel = BakingConverterViewModel()
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    
+    // Adaptive sizing based on device
+    private var isCompact: Bool {
+        horizontalSizeClass == .compact
+    }
+    
+    private var isIPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
+    private var maxContentWidth: CGFloat {
+        isIPad ? 600 : .infinity
+    }
+    
+    private var horizontalPadding: CGFloat {
+        if isIPad {
+            return horizontalSizeClass == .regular ? 60 : 40
+        } else {
+            return 24
+        }
+    }
+    
+    private var spacing: CGFloat {
+        isIPad ? 40 : 32
+    }
     
     var body: some View {
         NavigationView {
@@ -147,20 +174,63 @@ struct ContentView: View {
                 // Background gradient
                 backgroundGradient
                 
-                ScrollView {
-                    VStack(spacing: 32) {
-                        headerSection
-                        ingredientSelectionSection
-                        gramInputSection
-                        resultSection
-                        Spacer(minLength: 20)
+                GeometryReader { geometry in
+                    ScrollView {
+                        contentView(for: geometry.size)
                     }
-                    .padding(.horizontal, 24)
-                    .padding(.top, 20)
                 }
             }
             .navigationBarHidden(true)
             .preferredColorScheme(nil) // Supports both light and dark mode
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    @ViewBuilder
+    private func contentView(for size: CGSize) -> some View {
+        let shouldUseGrid = isIPad && horizontalSizeClass == .regular && size.width > 768
+        
+        VStack(spacing: spacing) {
+            headerSection
+            
+            if shouldUseGrid {
+                // iPad landscape: Use grid layout
+                iPadGridLayout
+            } else {
+                // iPhone and iPad portrait: Use vertical layout
+                verticalLayout
+            }
+            
+            Spacer(minLength: 20)
+        }
+        .frame(maxWidth: maxContentWidth)
+        .padding(.horizontal, horizontalPadding)
+        .padding(.top, isIPad ? 40 : 20)
+        .frame(maxWidth: .infinity) // Center content on larger screens
+    }
+    
+    // Vertical layout for iPhone and iPad portrait
+    private var verticalLayout: some View {
+        VStack(spacing: spacing) {
+            ingredientSelectionSection
+            gramInputSection
+            resultSection
+        }
+    }
+    
+    // Grid layout for iPad landscape
+    private var iPadGridLayout: some View {
+        VStack(spacing: spacing) {
+            // First row: Ingredient selection spanning full width
+            ingredientSelectionSection
+            
+            // Second row: Input and result side by side
+            HStack(spacing: 32) {
+                gramInputSection
+                    .frame(maxWidth: .infinity)
+                resultSection
+                    .frame(maxWidth: .infinity)
+            }
         }
     }
 }
@@ -182,28 +252,30 @@ extension ContentView {
     
     /// Header section with app description
     private var headerSection: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: isIPad ? 20 : 12) {
             Image(systemName: "scalemass.fill")
-                .font(.system(size: 48))
-                                        .foregroundColor(.blue)
+                .font(.system(size: isIPad ? 72 : 48))
+                .foregroundColor(.blue)
                 .accessibilityHidden(true)
             
             Text("Konverter gram til desiliter for baking")
-                .font(.headline)
+                .font(isIPad ? .title : .headline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
+                .lineLimit(isIPad ? 1 : 2)
         }
-        .padding(.top, 8)
+        .padding(.top, isIPad ? 20 : 8)
     }
     
     /// Ingredient selection section
     private var ingredientSelectionSection: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: isIPad ? 20 : 16) {
             HStack {
                 Image(systemName: "list.bullet")
                     .foregroundColor(.blue)
+                    .font(isIPad ? .title2 : .body)
                 Text("Velg ingrediens")
-                    .font(.headline)
+                    .font(isIPad ? .title2 : .headline)
                 Spacer()
             }
             .accessibilityElement(children: .combine)
@@ -211,51 +283,55 @@ extension ContentView {
             
             IngredientPickerView(
                 selectedIngredient: $viewModel.selectedIngredient,
-                ingredients: viewModel.ingredients
+                ingredients: viewModel.ingredients,
+                isIPad: isIPad
             )
         }
-        .cardStyle()
+        .cardStyle(isIPad: isIPad)
     }
     
     /// Gram input section with slider
     private var gramInputSection: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: isIPad ? 24 : 20) {
             HStack {
                 Image(systemName: "scalemass")
                     .foregroundColor(.green)
+                    .font(isIPad ? .title2 : .body)
                 Text("Mengde i gram")
-                    .font(.headline)
+                    .font(isIPad ? .title2 : .headline)
                 Spacer()
                 Text(viewModel.formattedGramAmount())
-                    .font(.title2)
+                    .font(isIPad ? .title : .title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
             }
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Mengde i gram: \(viewModel.formattedGramAmount())")
             
-            GramSliderView(gramAmount: $viewModel.gramAmount)
+            GramSliderView(gramAmount: $viewModel.gramAmount, isIPad: isIPad)
         }
-        .cardStyle()
+        .cardStyle(isIPad: isIPad)
     }
     
     /// Result display section
     private var resultSection: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: isIPad ? 20 : 16) {
             HStack {
                 Image(systemName: "cup.and.saucer.fill")
                     .foregroundColor(.orange)
+                    .font(isIPad ? .title2 : .body)
                 Text("Resultat")
-                    .font(.headline)
+                    .font(isIPad ? .title2 : .headline)
                 Spacer()
             }
             
             ResultDisplayView(
                 result: viewModel.formattedDeciliterResult(),
-                ingredient: viewModel.selectedIngredient.localizedName
+                ingredient: viewModel.selectedIngredient.localizedName,
+                isIPad: isIPad
             )
         }
-        .cardStyle()
+        .cardStyle(isIPad: isIPad)
     }
 }
 
@@ -263,6 +339,7 @@ extension ContentView {
 struct IngredientPickerView: View {
     @Binding var selectedIngredient: BakingIngredient
     let ingredients: [BakingIngredient]
+    let isIPad: Bool
     
     var body: some View {
         Menu {
@@ -281,22 +358,22 @@ struct IngredientPickerView: View {
         } label: {
             HStack {
                 Text(selectedIngredient.localizedName)
-                    .font(.body)
+                    .font(isIPad ? .title3 : .body)
                     .foregroundColor(.primary)
                 
                 Spacer()
                 
                 Image(systemName: "chevron.up.chevron.down")
-                    .font(.caption)
+                    .font(isIPad ? .body : .caption)
                     .foregroundColor(.secondary)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
+            .padding(.horizontal, isIPad ? 20 : 16)
+            .padding(.vertical, isIPad ? 16 : 12)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: isIPad ? 16 : 12)
                     .fill(Color(.secondarySystemBackground))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: isIPad ? 16 : 12)
                             .stroke(Color(.separator), lineWidth: 1)
                     )
             )
@@ -310,16 +387,17 @@ struct IngredientPickerView: View {
 struct GramSliderView: View {
     @Binding var gramAmount: Double
     @State private var isDragging = false
+    let isIPad: Bool
     
     private let minValue: Double = 1.0
     private let maxValue: Double = 1000.0
     
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: isIPad ? 16 : 12) {
             // Slider
             HStack {
                 Text("\(Int(minValue))")
-                    .font(.caption)
+                    .font(isIPad ? .body : .caption)
                     .foregroundColor(.secondary)
                 
                 Slider(
@@ -339,7 +417,7 @@ struct GramSliderView: View {
                 .accessibilityValue("\(Int(gramAmount)) gram")
                 
                 Text("\(Int(maxValue))")
-                    .font(.caption)
+                    .font(isIPad ? .body : .caption)
                     .foregroundColor(.secondary)
             }
             
@@ -350,7 +428,7 @@ struct GramSliderView: View {
     
     /// Quick selection buttons for common amounts
     private var quickSelectionButtons: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: isIPad ? 16 : 12) {
             ForEach([50, 100, 200, 250, 500], id: \.self) { amount in
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.2)) {
@@ -358,24 +436,26 @@ struct GramSliderView: View {
                     }
                     
                     // Haptic feedback
-                    let impact = UIImpactFeedbackGenerator(style: .medium)
+                    let impact = UIImpactFeedbackGenerator(style: .light)
                     impact.impactOccurred()
                 }) {
                     Text("\(amount)g")
-                        .font(.caption)
+                        .font(isIPad ? .body : .caption)
                         .fontWeight(.medium)
                         .foregroundColor(gramAmount == Double(amount) ? .white : .blue)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
+                        .padding(.horizontal, isIPad ? 16 : 12)
+                        .padding(.vertical, isIPad ? 10 : 8)
                         .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(gramAmount == Double(amount) ? .blue : .blue.opacity(0.1))
+                            RoundedRectangle(cornerRadius: isIPad ? 12 : 8)
+                                .fill(gramAmount == Double(amount) ? Color.blue : Color.blue.opacity(0.1))
                         )
                 }
                 .accessibilityLabel("\(amount) gram")
-                .accessibilityHint("Sett mengde til \(amount) gram")
+                .accessibilityHint("Tipp for å velge \(amount) gram")
             }
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Hurtigvalg for gram mengder")
     }
 }
 
@@ -383,39 +463,40 @@ struct GramSliderView: View {
 struct ResultDisplayView: View {
     let result: String
     let ingredient: String
+    let isIPad: Bool
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: isIPad ? 20 : 16) {
             // Main result display
             HStack {
                 Spacer()
                 
-                VStack(spacing: 8) {
+                VStack(spacing: isIPad ? 12 : 8) {
                     Text("Tilsvarer")
-                        .font(.subheadline)
+                        .font(isIPad ? .title3 : .subheadline)
                         .foregroundColor(.secondary)
                     
                     Text(result)
-                        .font(.system(size: 36, weight: .bold, design: .rounded))
+                        .font(.system(size: isIPad ? 48 : 36, weight: .bold, design: .rounded))
                         .foregroundColor(.orange)
                         .animation(.easeInOut, value: result)
                 }
                 
                 Spacer()
             }
-            .padding(.vertical, 20)
+            .padding(.vertical, isIPad ? 32 : 20)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: isIPad ? 16 : 12)
                     .fill(.orange.opacity(0.1))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12)
+                        RoundedRectangle(cornerRadius: isIPad ? 16 : 12)
                             .stroke(.orange.opacity(0.3), lineWidth: 1)
                     )
             )
             
             // Additional context
             Text("av **\(ingredient)**")
-                .font(.subheadline)
+                .font(isIPad ? .body : .subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }
@@ -427,13 +508,13 @@ struct ResultDisplayView: View {
 // MARK: - View Modifiers
 extension View {
     /// Applies card styling with background, padding, and shadow
-    func cardStyle() -> some View {
+    func cardStyle(isIPad: Bool = false) -> some View {
         self
-            .padding(20)
+            .padding(isIPad ? 32 : 20)
             .background(
-                RoundedRectangle(cornerRadius: 16)
+                RoundedRectangle(cornerRadius: isIPad ? 20 : 16)
                     .fill(.regularMaterial)
-                    .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                    .shadow(color: .black.opacity(0.1), radius: isIPad ? 12 : 8, x: 0, y: isIPad ? 6 : 4)
             )
     }
 }
